@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Says Game</title>
+
+    <!-- boostrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- new files that make it work. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <audio id="clip1">
+        <source src="sounds/pickupCoin.wav"></source>
+    </audio>
+    <audio id="clip2">
+        <source src="sounds/pickupCoin2.wav"></source>
+    </audio>
+    <audio id="clip3">
+        <source src="sounds/pickupCoin1.wav"></source>
+    </audio>
+    <audio id="clip4">
+        <source src="sounds/pickupCoin3.wav"></source>
+    </audio>
+    
+</head>
+<body>
+    <main id="container">
+        <!-- header  -->
+        <section id="header">
+            <h1 id='game-title'>Jayson Says</h1>
+            <div id="modals">
+                <div id="modal-area">
+                        <!-- Setup modal -->
+                        <button type="button" class="btn btn-info btn-lg btn-warning modal-btn" id="setup-modal-btn" data-toggle="modal" data-target="#setup-modal">Help</button>
+
+                        <!-- Gameplay modal -->
+                        <button type="button" class="btn btn-info btn-lg btn-warning modal-btn" id="gameplay-modal-btn" data-toggle="modal" data-target="#gameplay-modal">Help</button>
+                </div>
+                
+
+                <!-- Setup Instructions Modal -->
+                <div id="setup-modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Setup Instructions</h4>
+                        </div>
+                        <div class="modal-body">
+                        <h4>Helpful setup instructions</h4> 
+                        <ol>
+                            <li>Enter your name</li>
+                            <li>Select your difficulty.</li>
+                            <li>Start game</li>
+                        </ol>
+                        <h2>Difficulties:</h2>
+                        <ol>
+                            <li>Easy: 4 Keys</li>
+                            <li>Medium: 8 Keys</li>
+                            <li>Hard: 12 Keys</li>
+                            <li>Phantom: 16 Keys played randomly each turn</li>
+                        </ol>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                
+                    </div>
+                </div>
+
+                <!-- Gameplay Instructions Modal -->
+                <div id="gameplay-modal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Gameplay Instructions</h4>
+                        </div>
+                        <div class="modal-body">
+                        <p>Gameplay instructions</p> 
+                        <h2>How to play:</h2>
+                        <p>Every turn, the computer will "play" a series of keys and flash lights on each key. Every key has a unique sound that will also play. Every turn, you must match the keys that the computer has played.</p>
+                            <p>                        In easy mode, the computer will generate a random sequence of 4 keys. On turn one, it will play one key. If you select the right key, it will go to round 2 and play 2 keys in sequence. Once you match the total sequence number, in this case, 4 keys played, you will win!</p>
+
+                        <p>In phantom mode, the sequence will be random every turn.
+                        </p>
+                        <p><strong>In every mode, if you get one wrong, you restart back to round 1.</strong></p>
+                        <h3>Good luck!!</h3>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- score board -->
+        <section id="score-board">
+            <div id="player-one-scoreboard">
+                <h2 id="player-one-name">Player 1 Name</h2>
+                <!-- <h4 id="player-one-lives">Lives:</h4> -->
+                <h4 id="player-one-difficulty">Difficulty:</h4>
+                <!-- <h4 id="player-one-score">Player 1 Score</h4> -->
+                <h3 id="round-number">-</h3>
+            </div>
+
+            <!-- <div id="game-details">
+                <h1>Final Score</h1>
+                <h4 id="round-number">Round: 1</h4>
+                <h4>Difficulty:</h4>
+            </div> -->
+
+            <!-- <div id="player-two-scoreboard">
+                <h2 id="player-two-name">Player 2 Name</h2>
+                <h4 id="player-two-lives">Lives:</h4>
+                <h4 id="player-two-score">Player 2 Score</h4>
+            </div> -->
+        </section>
+
+        <section id="content">
+            <!-- splash screen -->
+            <div id="splash-screen" class="screen">
+                <!-- <div id="number-players">
+                    <button type="button" class="btn btn-md btn-info" id="solo-btn">Solo</button>
+                    <button type="button" class="btn btn-md btn-info" id="multiplayer-btn">Multiplayer</button>
+                </div> -->
+                <div id="player-setup">
+                    <div>
+                        <h3>Enter your name:</h3>
+
+                      <input id="player-one-input" type="text" placeholder="Enter your name" placeholder="Player 1"/>
+                      <!-- <button id="player-one-joinBTN" >Join</button> -->
+                    </div>  
+                    <!-- <div>
+                      <input id="player-two-input" type="text" placeholder="Enter your name" placeholder="Player 2"/>
+                      <button id="player-two-joinBTN">Join</button>
+                    </div> -->
+                </div>
+                <div id="difficulty-settings">
+                    <h3>Select your difficulty:</h3>
+                    <button type="button" class="btn btn-md btn-info difficulty" id="easy-difficulty-btn">Easy</button>
+                    <button type="button" class="btn btn-md btn-info difficulty" id="medium-difficulty-btn">Medium</button>
+                    <button type="button" class="btn btn-md btn-info difficulty" id="hard-difficulty-btn">Hard</button>
+                    <button type="button" class="btn btn-md btn-info difficulty" id="phantom-difficulty-btn">Phantom</button>
+                    <div id="difficulty-information">
+                            <!-- insert popup for difficulty info. Or slide down. -->
+                            <p>Easy mode will flash 4 keys. Medium will flash 8. Hard will flash 12. Phantom mode will flash 16 and each round, the sequence will randomize.</p>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-lg btn-success" id="start-game-btn">Start Game</button>
+                <div id="error-information">
+                    <p></p>
+                </div>
+            </div>   
+
+            <!-- game screen -->
+            <div id="game-screen" class="screen">
+                <div class="keyboard">
+                    <div class="panel green" id="top-left-panel"></div>
+                    <div class="panel red" id="top-right-panel"></div>
+                    <div class="panel yellow" id="bottom-left-panel"></div>
+                    <div class="panel blue" id="bottom-right-panel"></div>
+                </div>
+                <div id="game-restart-section">
+                    <!-- <button type="button" class="btn btn-lg btn-primary" id="play-pause-btn">Play</button> -->
+                    <button type="button" class="btn btn-lg btn-primary" id="play-btn">Play Game</button>
+                    <button type="button" class="btn btn-lg btn-warning" id="end-game-btn">End Game</button>
+                </div>
+            </div>
+            
+            <!-- game over screen -->
+            <div id="game-over-screen" class="screen">
+                <!-- <div id="final-scoreboard">
+                    <h1>Final Score</h1>
+                    <h4>Round: </h4>
+                    <h4>Difficulty:</h4>
+                    <h4>Lives:</h4>
+                    <h2>Player 1 Score</h2>
+                    <h2>Player 2 Score</h2>
+                </div> -->
+                <button type="button" class="btn btn-lg btn-danger" id="quit-game-btn">Quit Game</button>
+                <button type="button" class="btn btn-lg btn-primary" id="play-again-btn">Play Again</button>
+            </div>
+        </section>
+    </main>
+
+        <!-- Scripts. Load jquery before bootstrap -->
+        <div>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+            <script src="scripts/game.js"></script>
+            <!-- <script src="scripts/workspace.js"></script> -->
+
+        </div>
+</body>
+</html>

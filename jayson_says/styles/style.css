@@ -1,0 +1,299 @@
+
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust:     100%;
+}
+
+/* Typography
+--------------------------------------------- */
+@font-face {
+	font-family: "Outfit-Regular";
+	src: url(../fonts/Outfit-Regular.ttf);
+	}
+
+@font-face {
+    font-family: "Outfit-Semibold";
+    src: url(../fonts/Outfit-Regular.ttf);
+    }
+
+@font-face {
+    font-family: "Righteous-Title";
+    src: url(../fonts/Righteous-Regular.ttf);
+    }
+
+
+body {
+	font-family: "Outfit-Regular", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 1.125rem;
+	font-weight: 400;
+	line-height: 1.6;
+	background-color: hsl(180, 25%, 90%);
+    background-color: hsl(180, 25%, 17%);
+    margin: 0px;
+}
+
+h1 {
+    margin: 0px;
+}
+/************ Layout and Structure
+
+************/
+
+#container {
+    height: 800px;
+    width: 1000px;
+    background-color: darkslateblue;
+    margin: 0 auto;
+    text-align: center;
+    /* padding: 2rem; */
+    border-radius: 30px;
+    margin-top: 1rem;
+    color: #fff;
+}
+
+.screen {
+    width: 100%;
+    padding: 1rem;
+}
+
+#header {
+    background-color: darkcyan;
+    width: 100%;
+    height: 100px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#score-board {
+    display: flex;
+    /* height: 200px; */
+    justify-content: space-around;
+    padding: 1rem;
+    text-align: center;
+}
+
+#player-one-scoreboard {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+#round-number {
+    background-color: #D99216;
+    padding: 2rem 2rem;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    padding: 2rem;
+    height: 450px;
+}
+
+#game-screen, 
+#game-over-screen {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+  }
+  
+.dimmed {
+    opacity: 0.3;
+  }
+
+#difficulty-settings {
+    margin: 2rem 0;
+}
+
+#player-one-input, #player-one-joinBTN {
+    font-size: 2rem;
+    padding: 0 1rem;
+}
+
+input[type=text] {
+    color:hsl(180, 25%, 17%)
+}
+
+
+/************ Modals & Buttons
+
+************/
+
+#error-information {
+    margin: 1rem;
+    background-color: #ff0000;
+    width: 100%;
+    text-align: center;
+
+}
+
+#player-one-joinBTN {
+    background-color: darkmagenta;
+    border: none;
+    padding: 0.25rem 2rem;
+    border-radius: 5%;
+}
+
+#modal-area {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.modal-body {
+    font-size: 1.5rem;
+    color: hsl(180, 25%, 17%);
+    text-align: left;
+}
+
+#gameplay-modal-btn {
+    display: none;
+}
+
+.btn-info {
+    width: 10rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+.btn-info:hover {
+    opacity: 0.8;
+}
+.btn-primary  {
+    background-color: darkcyan;
+    border-color: darkcyan;
+}
+
+#easy-difficulty-btn {
+    background-color: #16D9D9;
+    border-color: #16D9D9;
+}
+
+#medium-difficulty-btn {
+    background-color: darkcyan;
+    border-color: darkcyan;
+}
+
+#hard-difficulty-btn {
+    background-color: #004040;
+    border-color: #004040;
+}
+
+#phantom-difficulty-btn {
+    background-color: #8C0E6B;
+    border-color: #8C0E6B;
+}
+
+.btn-warning {
+    background-color: #D99216;
+    border-color: #D99216;
+}
+
+/* .difficulty:active {
+    background-color: rgb(139, 0, 139);
+    border-color: rgb(139, 0, 139);
+} */
+
+/************ Special Changes
+
+************/
+
+.playing {
+    border: 5px dashed red;
+}
+
+/************ Keyboard - Colours Shapes Layout
+
+************/
+.keyboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 20rem;
+    margin: 5rem auto;
+}
+
+.panel {
+    width: 10rem;
+    height: 10rem;
+    margin: 0.125rem;
+    cursor: pointer;
+}
+
+.panel:hover {
+    /* box-shadow: inset 0 0 0 0.25rem rgba(53, 53, 53, 0.651); */
+    /* box-shadow: inset 0 0 0 0.25rem rgba(0, 255, 255, 0.726); */
+    opacity: 0.9;
+}
+
+/* top left */
+.green {
+    background-color: darkgreen;
+    border-top-left-radius: 100%;
+
+}
+
+/* top right */
+.red {
+    background-color: darkred;
+    border-top-right-radius: 100%;
+
+}
+
+/* bottom left */
+.yellow {
+    background-color: goldenrod;
+    border-bottom-left-radius: 100%;
+}
+
+/* bottom right */
+.blue {
+    background-color: darkblue;
+    border-bottom-right-radius: 100%;
+}
+
+/* top left */
+.green:hover {
+    background-color: green;
+}
+
+/* top right */
+.red:hover {
+    background-color: red;
+}
+
+/* bottom left */
+.yellow:hover {
+    background-color: yellow;
+}
+
+/* bottom right */
+.blue:hover {
+    background-color: blue;
+
+}
+
+.active {
+    background-color: blanchedalmond;
+}
+
+.centre {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 10rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
